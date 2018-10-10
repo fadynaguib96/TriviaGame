@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trivia Game</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Merienda|Monoton|Orbitron" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+    <div>
+        <h2>Welcome to the World Cup 2018 Trivia Game</h2>
+    </div>
+    <div id="question"></div>
+    <div id="answer"></div>
+    <div id="results"></div>
+    <div id="time"></div>
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+    <script text="text/javascript">
+
+        var triviaObj = [
+
+            {
+
+                question: "How many minutes it take Russia to score the first goal in the opening match?",
+
+                answers: ["Three", "Twelve", "Fourty-four", "Eighty-nine"],
+
+                correct: "Twelve",
+
+                pic: "assets/images/question1.jpg"
+
+            },
+
+            {
+                question: "At 45 years and 161 days, who became the oldest ever player to play in a World Cup finals match?",
+
+                answers: ["Essam El-Hadary", "Sheirf Ekramy", "Steve Mandanda", "Mohamed El-Shenawy"],
+
+                correct: "Essam El-Hadary",
+
+                pic: "assets/images/question2.jpg"
+
+            },
+
+            {
+                question: "What was the only goalless draw of the tournament?",
+
+                answers: ["Egypt vs Uruguay", "Denmark vs France", "Peru vs Denmark", "Belguim vs England"],
+
+                correct: "Denmark vs France",
+
+                pic: "assets/images/question3.jpg"
+
+            },
+
+            {
+                question: "Panama and Iceland, the two debutants at the World Cup, picked up just one point between them. Against which team was it won?",
+
+                answers: ["Tunisia", "Croatia", "Argentina", "Nigeria"],
+
+                correct: "Argentina",
+
+                pic: "assets/images/question4.jpg"
+
+            },
+
+
+            {
+                question: "Nigeria only wore their hugely popular home kit once during the tournament. How many shirts did Nike say had been pre-ordered before it went on sale?",
+
+                answers: ["One million", "Three million", "Five million", "Ten million"],
+
+                correct: "Three million",
+
+                pic: "assets/images/question5.jpg"
+
+            },
+
+            {
+                question: "Which team won all three of their group games without conceding a goal?",
+
+                answers: ["Croatia", "Uruguay", "France", "Belguim"],
+
+                correct: "Uruguay",
+
+                pic: "assets/images/question6.jpg"
+
+            },
+
+            {
+                question: "Who had a penalty rescinded during the group stage after the referee used VAR and decided that the player had just fallen over?",
+
+                answers: ["Cristiano Ronaldo", "Harry Kane", "Lionel Messi", "Neymar"],
+
+                correct: "Neymar",
+
+                pic: "assets/images/question7.jpg"
+
+            },
+
+
+            {
+                question: "Cristiano Ronaldo hit a hat-trick and Diego Costa bagged a brace in the epic 3-3 draw between Spain and Portugal. Who scored the other goal?",
+
+                answers: ["Isco", "Marco Asensio", "Nacho", "Iago Aspas"],
+
+                correct: "Nacho",
+
+                pic: "assets/images/question8.jpg"
+
+            },
+
+            {
+                question: "Which Belgium player celebrated a goal by smashing the ball back into the net – only to see it rebound off the post and smash him in the face?",
+
+                answers: ["Yannick Carrasco", "Marouane Fellaini", "Michy Batshuayi", "Dries Mertens"],
+
+                correct: "Michy Batshuayi",
+
+                pic: "assets/images/question9.jpg"
+
+            },
+
+            {
+                question: "Which two club teams provided players that scored most goals at the World Cup (12 each)?",
+
+                answers: ["Manchester United and Manchester City", "PSG and Tottenham Hotspur", "Barcelona and Real Madrid", "Liverpool and Chelsea"],
+
+                correct: "PSG and Tottenham Hotspur",
+
+                pic: "assets/images/question10.jpg"
+
+            }
+
+        ]
+
+
+
+        // timeouts and intervals
+
+
+        var time = 10;
+        var questionInt;
+
+        $("#time").text("00:10")
+
+
+        questionInt = setInterval(count, 1000);
+
+
+        function count() {
+
+            time--;
+            var converted = timeConverter(time);
+            $("#time").text(converted);
+
+        }
+
+        function timeConverter(t) {
+
+            var minutes = Math.floor(t / 60);
+            var seconds = t - (minutes * 60);
+
+            if (seconds < 10) {
+                seconds = "0" + seconds;
+            }
+
+            if (minutes === 0) {
+                minutes = "00";
+            }
+            else if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+
+            return minutes + ":" + seconds;
+        }
+
+        function stop() {
+
+            clearInterval(questionInt);
+
+        }
+
+        function timeUp() {
+
+            $("#results").html("You ran out of time!! The correct answer is: " + triviaObj[0].correct);
+
+            $("#answer").text("");
+            var correctImg = $("<img>")
+            correctImg.addClass("imgs");
+            correctImg.attr("src", triviaObj[0].pic);
+            $("#question").html(correctImg);
+            console.log("timeup");
+
+
+        }
+
+
+        // setTimeout(timeUp, 1000 * 10)
+
+
+    
+
+
+        $("#question").text(triviaObj[0].question)
+
+
+        for (var i = 0; i < triviaObj[0].answers.length; i++) {
+            
+            var answerBtn = $("<button>");
+            answerBtn.addClass("answerbutton");
+            answerBtn.attr("data-answer", triviaObj[0].answers[i]);
+            answerBtn.text(triviaObj[0].answers[i]);
+            $("#answer").append(answerBtn);
+
+        }
+
+        count()
+        setTimeout(timeUp, 1000 * 10)
+
+
+        $(".answerbutton").on("click", function () {
+
+            var userAnswer = ($(this).attr("data-answer"));
+            var userAnswered = true
+
+            console.log(userAnswer)
+
+
+
+            if (userAnswer === triviaObj[0].correct) {
+
+                userAnswered = true
+                $("#results").text("You're Correct!!!");
+                $("#answer").text("");
+                var correctImg = $("<img>")
+                correctImg.addClass("imgs");
+                correctImg.attr("src", triviaObj[0].pic);
+                $("#question").html(correctImg);
+                stop();
+            }
+
+            else if (userAnswer !== triviaObj[0].correct) {
+                userAnswered = true
+                $("#results").html("You're Wrong!!! The correct answer is: " + triviaObj[0].correct);
+                $("#answer").text("");
+                var correctImg = $("<img>")
+                correctImg.addClass("imgs");
+                correctImg.attr("src", triviaObj[0].pic);
+                $("#question").html(correctImg);
+                stop();
+            }
+
+        
+
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>
