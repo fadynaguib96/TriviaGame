@@ -1,0 +1,195 @@
+body {
+    background-image: url("../images/background2.jpg");
+    background-size: cover;
+}
+
+p {
+    font-family: 'Merienda', cursive;
+    font-size: 27px;
+}
+
+.answerbutton{
+    font-size: 23px;
+    margin-right:20px;
+
+}
+
+
+#naav {
+    color: darkgoldenrod;
+    margin-bottom:0px;
+}
+
+.myNav {
+background-color: navy
+}
+
+.startbutton {
+    width:350px;
+    font-size: 23px;
+}
+
+.resetbutton{
+   width:350px;
+   font-size: 23px;
+
+}
+
+.box{
+    margin-top:35px;
+    background-color: gold;
+    padding:60px;
+}
+
+.imgs {
+    width: 700px;
+    height: 300px;
+}
+
+@media screen and (max-width:1024px){
+
+    .startbutton {
+        width:350px;
+        font-size: 23px;
+        margin-left:250px;
+    }
+
+    
+.resetbutton{
+    width:350px;
+        font-size: 23px;
+        margin-left:250px;
+ 
+ }
+
+    p {
+        font-family: 'Merienda', cursive;
+        font-size: 18px;
+    }
+
+    .imgs {
+        width: 620px;
+        height: 300px;
+    }
+
+    
+.answerbutton{
+    font-size: 16px;
+    margin-right: 8px;
+
+}
+
+
+
+
+}
+
+@media screen and (max-width:1000px){
+
+    .startbutton {
+        width:350px;
+        font-size: 23px;
+        margin-left:120px;
+    }
+
+    
+.resetbutton{
+    width:350px;
+        font-size: 23px;
+        margin-left:120px;
+ 
+ }
+
+    p {
+        font-family: 'Merienda', cursive;
+        font-size: 18px;
+    }
+
+    .imgs {
+        width: 620px;
+        height: 300px;
+    }
+
+    
+.answerbutton{
+    font-size: 16px;
+    margin-right: 8px;
+
+}
+
+
+@media screen and (max-width:800px){
+
+
+    .startbutton {
+        width:350px;
+        font-size: 23px;
+        margin-left:50px;
+    }
+
+    .resetbutton{
+        width:350px;
+        font-size: 23px;
+        margin-left:50px;
+     
+     }
+
+
+    p {
+        font-family: 'Merienda', cursive;
+        font-size: 18px;
+    }
+
+    .imgs {
+        width: 430px;
+        height: 200px;
+    }
+
+    
+.answerbutton{
+    font-size: 16px;
+    margin-right: 8px;
+
+}
+
+
+
+
+
+}
+
+@media screen and (max-width:490px){
+
+
+    .startbutton {
+        width:250px;
+        font-size: 15px;
+        margin-left:20px;
+    }
+
+    .resetbutton{
+        width:250px;
+        font-size: 15px;
+        margin-left:20px;
+     
+     }
+
+
+    p {
+        font-family: 'Merienda', cursive;
+        font-size: 18px;
+    }
+
+    .imgs {
+        width: 280px;
+        height: 150px;
+    }
+
+    
+.answerbutton{
+    font-size: 16px;
+    margin-right: 8px;
+
+}
+
+}
